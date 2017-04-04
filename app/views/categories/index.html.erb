@@ -1,0 +1,12 @@
+<div id="categories" v-cloak>
+  <div class="content-header">
+    <button id="createCategory" @click="showCreatePopup" class="btn-add">Create a category</button>
+  </div>
+  <ul class="categories">
+      <li v-for="category in categories" v-cloak>
+        <category :category="category" :categories="categories" @edit="editCategory(category)"></category>
+      </li>
+  </ul>
+  <create-popup :categories="categories"></create-popup>
+  <delete-popup :category="categoryToDelete" :delete-category="deleteCategory"></delete-popup>
+</div>

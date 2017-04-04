@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.popup.overlay
+//= require vue
+//= require vue-resource 
+//= require bootstrap
 //= require turbolinks
 //= require_tree .

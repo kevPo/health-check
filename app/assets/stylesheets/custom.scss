@@ -3,7 +3,7 @@
 /* mixins, variables, etc. */
 $grayMediumLight: #eaeaea;
 $blue: #1e90ff;
-$red: #FF4337;
+$red: #eb5252;
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -30,7 +30,7 @@ section {
   overflow: auto;
 }
 textarea {
-  resize: vertical;
+  resize: none;;
 }
 .center {
   text-align: center;
@@ -40,11 +40,15 @@ textarea {
 }
 /* bootstrap customizations */
 .container {
-  width: 30%;
+  width: 100%;
 }
 /* typography */
+h1, h2, h3, h4, h5, h6,
+input, textarea, button, p, div {
+  font-family: 'Open Sans', sans-serif;
+}
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+  line-height: 1.2;
 }
 h1 {
   font-size: 3em;
@@ -91,12 +95,21 @@ nav {
   padding: 0;
   margin: 0;
 }
+.nav-group.left {
+  justify-content: flex-start;
+  .dropdown {
+    margin-left: 2em;
+  }
+}
 .nav-group > li > a > .gravatar {
   border-radius: 50%;
   filter: grayscale(100%);
   &:hover {
     filter: none;
   }
+}
+.nav-list__list-item {
+  margin: 0 1em;
 }
 .nav-list__list-item.logo {
   margin: 10px 0 5px 0;
@@ -223,13 +236,13 @@ input {
   justify-content: center;;
   text-align: center;
   position: relative;
-  li {
+  .category-container {
     background-color: white;
     border: 7px solid white;
     position: relative;
-    padding: 20px;
+    padding: 30px 20px;
     border-radius: 2%;
-    width: 300px;
+    width: 275px;
     min-height: 250px;
     margin: 1.5em;
     display: flex;
@@ -242,38 +255,35 @@ input {
       -moz-transform: scale(1.1, 1.1);
       -ms-transform: scale(1.1, 1.1);
       transform: scale(1.1, 1.1);
-    //   border-color: $blue;
-    //   > a {
-    //     display: block;
-    //   }
     }
     a {
+      cursor: pointer;
+      text-decoration: none;
+      -webkit-transition: none 86ms ease-out;
+      transition: none 86ms ease-out;
       position: absolute;
-      font-size: 1.5em;
-      font-weight: bold;
-      top: 10px;
-      right: 10px;
-      color: #778899;
-      display: none;
-      &:hover {
-        color: $red;
-        text-decoration: none;
-      }
-    }
-    .btn-edit {
-      // display: none;
+      top: -30px;
+      right: -20px;
     }
   }
 }
+.category-container.edit-mode:hover {
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
 .card {
   text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
   .title {
     border-bottom: 5px solid $blue;
   }
   .example {
     line-height: 1.3em;
   }
-  .form-title {
+  .large-form-title {
     border-bottom: 10px solid $blue;
     margin-bottom: 2em;
     input {
@@ -282,16 +292,37 @@ input {
       padding: 0.3em;
     }
   }
-  .form-area {
+  .large-form-area {
     font-size: 1.3em;
     resize: none;
     padding: 0.5em;
     height: 110px;
   }
-  .form-buttons {
-    display: flex;
-    justify-content: center;
+  .form-title {
+    font-size: 24.5px;
+    font-weight: 800;
   }
+}
+.form-buttons, .large-form-buttons {
+  display: flex;
+  justify-content: center;
+}
+.form-area {
+  margin-bottom: 0;
+}
+.form-buttons {
+  margin: 10px 0 -20px 0;
+}
+.form-buttons button {
+  width: 120px;
+  margin: 1em;
+  padding: 10px 0;
+}
+.large-form-buttons {
+  margin: 2em 0 0 0;
+}
+.large-form-buttons button {
+  width: 140px;
 }
 #create_popup {
   transform: scale(0.8);
@@ -318,12 +349,21 @@ button {
   box-shadow: 0 6px #0A60B2;
   color: #fff;
   cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
   padding: 15px 35px;
   display: inline-block;
   margin: 15px 30px;
   text-transform: uppercase;
   font-weight: 800;
   outline: none;
+  &:after {
+  	content: '';
+  	position: absolute;
+  	z-index: -1;
+  	-webkit-transition: all 0.3s;
+  	-moz-transition: all 0.3s;
+  	transition: all 0.3s;
+  }
 }
 .btn-cancel {
   background-color: #696969;
@@ -335,66 +375,65 @@ button {
 }
 .btn-remove {
   background-color: $red;
-  box-shadow: 0 6px #C9392B;
+  box-shadow: 0 6px darken($red, 10%);
 }
 .btn-add {
+// border-radius: 0 0 5px 5px;
+//   &:hover {
+//     box-shadow: 0 4px #0A60B2;
+//     top: 2px;
+//   }
+//   &:active {
+//     box-shadow: 0 0 #0A60B2;
+//     top: 6px;
+//   }
+}
+.delete {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: #f08080;
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  height: 20px;
+  outline: none;
+  position: relative;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  vertical-align: top;
+  width: 20px;
+  .is-medium {
+    height: 26px;
+    width: 26px;
+  }
+  &::before, &::after {
+    background-color: white;
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
   &:hover {
-    // box-shadow: 0 4px #ab3c3c;
-    // top: 2px;
-  }
-  &:active {
-    // box-shadow: 0 0 #ab3c3c;
-    // top: 6px;
+    background-color: darken(#f08080, 10%);
   }
 }
-/* MODAL */
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #ccc;
-  display: table;
-  transition: opacity .3s ease;
+.delete::before {
+  height: 2px;
+  width: 50%;
 }
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-.modal-container {
-  width: 600px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  transition: all .3s ease;
-}
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-.modal-body {
-  margin: 20px 0;
-}
-.modal-default-button {
-  float: right;
-}
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
-.modal-enter {
-  opacity: 0;
-}
-.modal-leave-active {
-  opacity: 0;
-}
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+.delete::after {
+  height: 50%;
+  width: 2px;
 }

@@ -10,21 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404000303) do
+ActiveRecord::Schema.define(version: 20170404020251) do
 
   create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "team_id"
+    t.string   "awesome"
+    t.string   "crappy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["team_id", "created_at"], name: "index_categories_on_team_id_and_created_at"
   end
 
   create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string   "membership"
-    t.string   "category"
+    t.string   "name"
+    t.integer  "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170404000303) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

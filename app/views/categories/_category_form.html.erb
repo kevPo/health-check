@@ -1,0 +1,12 @@
+<%= form_for(@category) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <div class="field">
+    <%= f.text_area :awesome, placeholder: "Awesome Example..." %>
+  </div>
+  <div class="field">
+    <%= f.text_area :crappy, placeholder: "Crappy Example..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

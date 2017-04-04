@@ -11,8 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to SPEAKER!"
-      redirect_to @user
+      redirect_to :controller=>'teams', :action=>'new'
     else
       render 'new'
     end

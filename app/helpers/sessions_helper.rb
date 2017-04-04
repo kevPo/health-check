@@ -28,12 +28,30 @@ module SessionsHelper
     end
 
     def logged_in?
-        !current_user.nil?
+      !current_user.nil?
     end
 
     def log_out
         forget(current_user)
         session.delete(:user_id)
         @current_user = nil
+    end
+
+    def select_team(team)
+        self.current_team = team
+    end
+
+    def current_team=(team)
+        @current_team = team
+    end
+
+    def current_team
+        # remember_token = User.digest(cookies[:remember_token])
+        # @current_user ||= User.find_by(remember_token: remember_token)
+        @current_team
+    end
+    
+    def current_team?(team)
+        team == current_team
     end
 end

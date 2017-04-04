@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = current_team.categories
+    @categories = current_user.teams[0].categories
     respond_to do |format|
       format.html
       format.json { render :json => @categories }
