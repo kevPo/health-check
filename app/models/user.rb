@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :memberships, dependent: :destroy
+  has_many :teams, through: :memberships
+  accepts_nested_attributes_for :teams
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }

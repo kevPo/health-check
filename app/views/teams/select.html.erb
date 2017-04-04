@@ -1,0 +1,10 @@
+<h1>Select Your Squad</h1>
+<div class="">
+  <%= gravatar_for current_user, size: 300 %>
+  <%= current_user.name %>
+  <% @teams.each do |team| %>
+  <div>
+    <%= link_to team.name, :controller => "teams", :action => "selected", :id => team.id  %>
+  </div>
+  <% end %>
+</div>

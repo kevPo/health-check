@@ -41,6 +41,8 @@ GEM
     arel (7.1.4)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-sass (2.3.2.0)
+      sass (~> 3.2)
     builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -57,6 +59,10 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.8.1)
+    inline_svg (0.12.1)
+      activesupport (>= 3.0)
+      loofah (>= 2.0)
+      nokogiri (>= 1.6)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
@@ -140,7 +146,7 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    uglifier (3.1.12)
+    uglifier (3.1.13)
       execjs (>= 0.3.0, < 3)
     web-console (3.5.0)
       actionview (>= 5.0)
@@ -156,8 +162,10 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (= 3.1.11)
+  bootstrap-sass (= 2.3.2.0)
   byebug
   coffee-rails (~> 4.2)
+  inline_svg
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

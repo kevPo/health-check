@@ -1,0 +1,44 @@
+<header>
+  <nav>
+    <% if logged_in? %>
+      <ul class="nav-group">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= gravatar_for current_user, size: 50 %>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+          </ul>
+        </li>
+        <li class="nav-list__list-item"><%= link_to "Add Team", teams_path %></li>
+        <li class="nav-list__list-item"><%= link_to "Take Assessment", root_path %></li>
+      </ul>
+      <ul class="nav-group">
+        <li class="nav-list__list-item logo">
+          <%= link_to root_path do %>
+            <%= inline_svg "health-check.svg", class: 'nav-list__logo' %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="nav-group">
+        <li class="nav-list__list-item"><%= link_to "History", categories_path %></li>
+        <li class="nav-list__list-item"><%= link_to "Categories", categories_path %></li>
+        <li class="nav-list__list-item"><%= link_to "Sign Out", logout_path, method: "delete" %></li>
+      </ul>
+    <% else %>
+      <ul class="nav-group">
+      </ul>
+      <ul class="nav-group">
+        <li class="nav-list__list-item logo">
+          <%= link_to root_path do %>
+            <%= inline_svg "health-check.svg", class: 'nav-list__logo' %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="nav-group">
+        <li><%= link_to "Sign in", login_path %></li>
+      </ul>
+    <% end %>
+  </nav>
+</header>

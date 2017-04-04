@@ -1,0 +1,400 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+/* mixins, variables, etc. */
+$grayMediumLight: #eaeaea;
+$blue: #1e90ff;
+$red: #FF4337;
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+/* universal */
+html {
+  overflow-y: scroll;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #454545;
+  background-color: #ccc;
+}
+section {
+  overflow: auto;
+}
+textarea {
+  resize: vertical;
+}
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+/* bootstrap customizations */
+.container {
+  width: 30%;
+}
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+p {
+  font-size: 1.1em;
+}
+/* header */
+nav {
+  background-color: $blue;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  a {
+    font-size: 1.1em;
+    font-weight: 800;
+    color: white;
+    align-self: center;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    &:hover {
+      color: white;
+    }
+  }
+}
+.nav-group {
+  list-style: none;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+  flex: 3;
+  padding: 0;
+  margin: 0;
+}
+.nav-group > li > a > .gravatar {
+  border-radius: 50%;
+  filter: grayscale(100%);
+  &:hover {
+    filter: none;
+  }
+}
+.nav-list__list-item.logo {
+  margin: 10px 0 5px 0;
+  text-align: center;
+  flex: 1;
+}
+.nav-list__logo {
+  width: 60px;
+  fill: white;
+  transition: all .2s ease-in-out;
+  &:hover {
+    -webkit-transform: scale(1.1, 1.1);
+    -moz-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+  }
+}
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+/* sidebar */
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+/* forms */
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+input {
+  height: auto !important;
+}
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+/* Users index */
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+/* Categories index */
+.categories {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;;
+  text-align: center;
+  position: relative;
+  li {
+    background-color: white;
+    border: 7px solid white;
+    position: relative;
+    padding: 20px;
+    border-radius: 2%;
+    width: 300px;
+    min-height: 250px;
+    margin: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all .2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      -webkit-transform: scale(1.1, 1.1);
+      -moz-transform: scale(1.1, 1.1);
+      -ms-transform: scale(1.1, 1.1);
+      transform: scale(1.1, 1.1);
+    //   border-color: $blue;
+    //   > a {
+    //     display: block;
+    //   }
+    }
+    a {
+      position: absolute;
+      font-size: 1.5em;
+      font-weight: bold;
+      top: 10px;
+      right: 10px;
+      color: #778899;
+      display: none;
+      &:hover {
+        color: $red;
+        text-decoration: none;
+      }
+    }
+    .btn-edit {
+      // display: none;
+    }
+  }
+}
+.card {
+  text-align: left;
+  .title {
+    border-bottom: 5px solid $blue;
+  }
+  .example {
+    line-height: 1.3em;
+  }
+  .form-title {
+    border-bottom: 10px solid $blue;
+    margin-bottom: 2em;
+    input {
+      font-size: 3em;
+      font-weight: 800;
+      padding: 0.3em;
+    }
+  }
+  .form-area {
+    font-size: 1.3em;
+    resize: none;
+    padding: 0.5em;
+    height: 110px;
+  }
+  .form-buttons {
+    display: flex;
+    justify-content: center;
+  }
+}
+#create_popup {
+  transform: scale(0.8);
+}
+.popup_visible #create_popup {
+  transform: scale(1);
+}
+/* OTHER SUTFF */
+.content-header {
+  text-align: center;
+  margin: 3em 0 2em 0;
+  h1 {
+    margin-bottom: 50px;
+  }
+  button {
+    margin: 0 auto;
+  }
+}
+/* BUTTONS */
+button {
+  background: $blue;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 6px #0A60B2;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px 35px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  font-weight: 800;
+  outline: none;
+}
+.btn-cancel {
+  background-color: #696969;
+  box-shadow: 0 6px #333;
+}
+.btn-edit {
+  background-color: #3cb371;
+  box-shadow: 0 6px #339860;
+}
+.btn-remove {
+  background-color: $red;
+  box-shadow: 0 6px #C9392B;
+}
+.btn-add {
+  &:hover {
+    // box-shadow: 0 4px #ab3c3c;
+    // top: 2px;
+  }
+  &:active {
+    // box-shadow: 0 0 #ab3c3c;
+    // top: 6px;
+  }
+}
+/* MODAL */
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  display: table;
+  transition: opacity .3s ease;
+}
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal-container {
+  width: 600px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  transition: all .3s ease;
+}
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+.modal-body {
+  margin: 20px 0;
+}
+.modal-default-button {
+  float: right;
+}
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+.modal-enter {
+  opacity: 0;
+}
+.modal-leave-active {
+  opacity: 0;
+}
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
