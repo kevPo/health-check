@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404020251) do
+ActiveRecord::Schema.define(version: 20170406020538) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.integer  "team_id"
     t.string   "awesome"
     t.string   "crappy"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["team_id", "created_at"], name: "index_categories_on_team_id_and_created_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "default",    default: false
+    t.index ["created_at"], name: "index_categories_on_team_id_and_created_at"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170404020251) do
     t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "team_categories", force: :cascade do |t|
+    t.integer  "team_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "teams", force: :cascade do |t|

@@ -38,8 +38,8 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     if @team.save
-      flash[:success] = "your team was created"
       current_user.memberships.create(:team_id => @team.id)
+      set_defaults @team.id
       redirect_to @team
     else
       render 'new'
@@ -50,6 +50,12 @@ private
 
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def set_defaults (team_id)
+    Category.where(default: true).each do |category|
+      TeamCategory.create({ team_id: team_id, category_id: category.id })
+    end
   end
 
 end
