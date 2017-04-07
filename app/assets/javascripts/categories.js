@@ -8,7 +8,7 @@ Vue.http.interceptors.push({
   }
 });
 categoryResource = Vue.resource('/categories{/id}.json')
-let Events = new Vue({});
+var Events = new Vue({});
 Vue.component('category', {
   props: ['categories', 'category'],
   data() {
