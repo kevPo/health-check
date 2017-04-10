@@ -54,7 +54,8 @@ private
 
   def set_defaults (team_id)
     Category.where(default: true).each do |category|
-      TeamCategory.create({ team_id: team_id, category_id: category.id })
+      @category = Category.create({ name: category.name, awesome: category.awesome, crappy: category.crappy })
+      TeamCategory.create({ team_id: team_id, category_id: @category.id })
     end
   end
 

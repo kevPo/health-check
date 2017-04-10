@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :signed_in_user, only: [:index, :destroy]
-  before_action :admin_user,     only: :destroy
+  # before_action :admin_user,     only: :destroy
   skip_before_action :verify_authenticity_token
   
   def new
