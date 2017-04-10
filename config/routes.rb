@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :users
   resources :categories
   resources :teams
+  resources :account_activations, only: [:edit]
 end
