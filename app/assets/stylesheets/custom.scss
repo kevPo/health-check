@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
 /* mixins, variables, etc. */
 $grayMediumLight: #eaeaea;
-$blue: #1e90ff;
+// $blue: #1e90ff;
+$blue: #1DB954;
 $red: #eb5252;
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -346,7 +347,8 @@ button {
   background: $blue;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 6px #0A60B2;
+  box-shadow: 0 6px darken($blue, 5%);
+  // box-shadow: 0 6px #0A60B2;
   color: #fff;
   cursor: pointer;
   font-family: 'Open Sans', sans-serif;
